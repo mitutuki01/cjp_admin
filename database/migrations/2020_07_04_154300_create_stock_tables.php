@@ -45,6 +45,8 @@ class CreateStockTables extends Migration
             $table->dateTime('create_dt')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('update_dt')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->primary(['product_id', 'genre_id']);
+            $table->index('create_dt');
+            $table->index('update_dt');
         });
     }
 
