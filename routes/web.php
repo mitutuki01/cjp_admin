@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('search', function () {
     return 'Fooo!';
 });
+
+Route::get('stock/search', 'StockSearchController@search');
