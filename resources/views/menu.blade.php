@@ -66,12 +66,12 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
-                <a href="{{ url('/home') }}">Home</a>
+                <a href="{{ url('/') }}">Home</a>
             </div>
 
             <div class="content">
                 <div class="title m-b-md">
-                    Ceramic Japan　管理ツール
+                    Ceramic Japan管理ツール
                 </div>
 
                 <div class="links">
