@@ -18,7 +18,7 @@
                 @foreach ($stockList as $stock)
                     <tr>
                     	<a href="{{ url('stock/'.$stock->id) }}">
-                        <td>{{ productMap[$stock->product_id]->name }}</td>
+                        <td>{{ $productMap[$stock->product_id]->name }}</td>
                         <td>{{ $stock->name }}</a></td>
                         <td>{{ $stock->total_stock }}</td>
                         </a>
