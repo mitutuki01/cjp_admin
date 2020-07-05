@@ -17,11 +17,13 @@ class StockTablesSeeder extends Seeder
             'product_id' => 1,
             'name' => 'モデラート',
             'image' => '',
+            'jan_code' => '41234567891',
         ]);
         DB::table('mst_products')->insert([
             'product_id' => 2,
             'name' => '酒器だるま',
             'image' => '',
+            'jan_code' => '49876543210',
         ]);
 
         DB::table('mst_genres')->insert([

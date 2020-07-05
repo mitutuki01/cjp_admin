@@ -17,7 +17,7 @@ class CreateMstProductsTable extends Migration
             $table->increments('product_id');
             $table->string('name');
             $table->string('image');
-            $table->integer('jan_code');
+            $table->string('jan_code');
             $table->index('name');
             $table->index('jan_code');
         });
