@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMstGenreTable extends Migration
+class CreateMstProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateMstGenreTable extends Migration
      */
     public function up()
     {
-        Schema::table('mst_genre', function (Blueprint $table) {
-            $table->increments('genre_id')->autoIncrement();
+        Schema::table('mst_products', function (Blueprint $table) {
+            $table->increments('product_id')->autoIncrement();
             $table->string('name');
-            $table->primary('genre_id');
+            $table->string('image');
+            $table->primary('product_id');
             $table->index('name');
         });
     }
@@ -28,8 +29,8 @@ class CreateMstGenreTable extends Migration
      */
     public function down()
     {
-        Schema::table('mst_genre', function (Blueprint $table) {
-            Schema::drop('mst_genre');
+        Schema::table('mst_products', function (Blueprint $table) {
+            Schema::drop('mst_products');
         });
     }
 }
