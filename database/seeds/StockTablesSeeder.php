@@ -49,7 +49,7 @@ class StockTablesSeeder extends Seeder
             'stock' => 2,
         ]);
         DB::table('stocks')->insert([
-            'product_id' => 1,
+            'product_id' => 2,
             'genre_id' => 2,
             'stock' => 7,
         ]);
