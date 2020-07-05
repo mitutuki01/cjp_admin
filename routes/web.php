@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('search', function () {
-    return 'Fooo!';
+    return view('menu');
 });
 
 Route::get('stock/search', 'StockSearchController@search');
+Route::resource('stock', 'StockController');
+Route::resource('stock_history', 'StockHistoryController');
