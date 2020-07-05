@@ -13,9 +13,9 @@ class CreateStockHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::table('stock_histories', function (Blueprint $table) {
-            $table->increments('product_id');
-            $table->increments('genre_id');
+        Schema::create('stock_histories', function (Blueprint $table) {
+            $table->integer('product_id');
+            $table->integer('genre_id');
             $table->integer('stock');
             $table->integer('modify_stock');
             $table->dateTime('create_dt')->default(DB::raw('CURRENT_TIMESTAMP'));

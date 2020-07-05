@@ -13,11 +13,10 @@ class CreateMstProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('mst_products', function (Blueprint $table) {
-            $table->increments('product_id')->autoIncrement();
+        Schema::create('mst_products', function (Blueprint $table) {
+            $table->increments('product_id');
             $table->string('name');
             $table->string('image');
-            $table->primary('product_id');
             $table->index('name');
         });
     }
@@ -29,8 +28,6 @@ class CreateMstProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('mst_products', function (Blueprint $table) {
-            Schema::drop('mst_products');
-        });
+        Schema::dropIfExists('mst_products');
     }
 }

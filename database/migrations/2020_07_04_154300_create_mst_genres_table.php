@@ -14,9 +14,8 @@ class CreateMstGenresTable extends Migration
     public function up()
     {
         Schema::create('mst_genres', function (Blueprint $table) {
-            $table->increments('genre_id')->autoIncrement();
+            $table->increments('genre_id');
             $table->string('name');
-            $table->primary('genre_id');
             $table->index('name');
         });
     }
