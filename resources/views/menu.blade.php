@@ -75,9 +75,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('stock/search') }}">在庫管理</a>
-
-                    <a href="{{ url('/stock/search') }}">在庫管理２</a>
+                    <a href="{{ url('/stock/search') }}">在庫管理</a>
                 </div>
             </div>
         </div>
