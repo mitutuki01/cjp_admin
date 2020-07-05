@@ -13,7 +13,7 @@ class CreateMstGenresTable extends Migration
      */
     public function up()
     {
-        Schema::table('mst_genres', function (Blueprint $table) {
+        Schema::create('mst_genres', function (Blueprint $table) {
             $table->increments('genre_id')->autoIncrement();
             $table->string('name');
             $table->primary('genre_id');
@@ -28,8 +28,6 @@ class CreateMstGenresTable extends Migration
      */
     public function down()
     {
-        Schema::table('mst_genres', function (Blueprint $table) {
-            Schema::drop('mst_genres');
-        });
+        Schema::dropIfExists('mst_genres');
     }
 }

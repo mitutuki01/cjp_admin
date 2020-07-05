@@ -33,9 +33,6 @@ class CreateStockHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('stock_histories', function (Blueprint $table) {
-            Schema::drop('stock_histories');
-        });
-
+        Schema::dropIfExists('stock_histories');
     }
 }
