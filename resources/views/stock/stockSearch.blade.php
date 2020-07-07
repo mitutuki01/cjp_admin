@@ -5,7 +5,6 @@
 
 @section('content')
 <div class="container">
-    <h1>{{ $title }}</h1>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -19,8 +18,8 @@
                 @foreach ($stockList as $stock)
                     <tr>
                     	<a href="{{ url('stock/'.$stock->id) }}">
+                        <td>{{ $stock->product_id }}</a></td>
                         <td>{{ $productMap[$stock->product_id]->name }}</td>
-                        <td>{{ $stock->name }}</a></td>
                         <td>{{ $stock->total_stock }}</td>
                         </a>
                     </tr>

@@ -10,10 +10,16 @@ use App\Stock;
 class StockSearchController extends Controller
 {
 	public function search(){ 
-
+		$searchWord = "";
 
 		$productMap = MstProduct::getMap();
 		$genreMap = MstGenre::getMap();
+		$stockList = DB::table('stocks')
+                     ->select(DB::raw('id, name, sum(stock) as total_stock'))
+                     ->where('id', 'like', '%'.$searchWord.'%')
+                     ->orWhere('name', 'like', '%'.$searchWord.'%')
+                     ->groupBy('name')
+                     ->get();
 		$stockList = Stock::all();
 
 		return view('stock.stockSearch', [
