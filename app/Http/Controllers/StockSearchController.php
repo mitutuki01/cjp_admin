@@ -16,10 +16,11 @@ class StockSearchController extends Controller
 		$productMap = MstProduct::getMap();
 		$genreMap = MstGenre::getMap();
 		$stockList = DB::table('stocks')
-                     ->select(DB::raw('id, name, sum(stock) as total_stock'))
-                     ->where('id', 'like', '%'.$searchWord.'%')
-                     ->orWhere('name', 'like', '%'.$searchWord.'%')
-                     ->groupBy('name')
+                     ->select(DB::raw('products.id as id , products.name as name, sum(stocks.stock) as total_stock'))
+                     ->join('products', 'stocks.product_id', '=', 'products.product_id')
+                     ->where('products.id', 'like', '%'.$searchWord.'%')
+                     ->orWhere('products.name', 'like', '%'.$searchWord.'%')
+                     ->groupBy('products.name')
                      ->get();
 		$stockList = Stock::all();
 
