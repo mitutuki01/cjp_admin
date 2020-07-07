@@ -17,7 +17,7 @@ class StockSearchController extends Controller
 		$genreMap = MstGenre::getMap();
 		$stockList = DB::table('stocks')
                      ->select(DB::raw('products.id as id , products.name as name, sum(stocks.stock) as total_stock'))
-                     ->join('products', 'stocks.product_id', '=', 'products.product_id')
+                     ->join('mst_products', 'stocks.product_id', '=', 'products.product_id')
                      ->where('products.id', 'like', '%'.$searchWord.'%')
                      ->orWhere('products.name', 'like', '%'.$searchWord.'%')
                      ->groupBy('products.name')
