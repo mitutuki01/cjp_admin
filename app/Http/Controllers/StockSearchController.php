@@ -13,6 +13,7 @@ class StockSearchController extends Controller
 	public function search(Request $request){ 
 		$searchWord = $request->word;
 
+		$productMap = MstProduct::getMap();
 		$targetProductId = [];
 		if($searchWord == ""){
 			$targetProductId = array_keys($productMap);
@@ -25,7 +26,6 @@ class StockSearchController extends Controller
 			}	
 		}
 
-		$productMap = MstProduct::getMap();
 		$genreMap = MstGenre::getMap();
 		$stockList = DB::table('stocks')
                      ->select(DB::raw('stocks.product_id as id , mst_products.name as name, sum(stocks.stock) as total_stock'))
