@@ -18,7 +18,7 @@ class StockSearchController extends Controller
 		$stockList = DB::table('stocks')
                      ->select(DB::raw('stocks.product_id as id , mst_products.name as name, sum(stocks.stock) as total_stock'))
                      ->join('mst_products', 'stocks.product_id', '=', 'mst_products.product_id')
-                     ->where('mst_products.id', 'like', '%'.$searchWord.'%')
+                     ->where('mst_products.product_id', 'like', '%'.$searchWord.'%')
                      ->orWhere('mst_products.name', 'like', '%'.$searchWord.'%')
                      ->groupBy('mst_products.name')
                      ->get();
