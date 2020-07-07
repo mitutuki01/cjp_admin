@@ -19,7 +19,7 @@
                     <tr>
                     	<a href="{{ url('stock/'.$stock->id) }}">
                         <td>{{ $stock->product_id }}</a></td>
-                        <td>{{ $productMap[$stock->product_id]->name }}</td>
+                        <td>{{ $stock->name }}</td>
                         <td>{{ $stock->total_stock }}</td>
                         </a>
                     </tr>

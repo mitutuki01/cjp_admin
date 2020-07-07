@@ -28,7 +28,7 @@ class StockSearchController extends Controller
 
 		$genreMap = MstGenre::getMap();
 		$stockList = DB::table('stocks')
-                     ->select(DB::raw('stocks.product_id as id , mst_products.name as name, sum(stocks.stock) as total_stock'))
+                     ->select(DB::raw('stocks.product_id as product_id , mst_products.name as name, sum(stocks.stock) as total_stock'))
                      ->join('mst_products', 'stocks.product_id', '=', 'mst_products.product_id')
                      ->whereIn('stocks.product_id', $targetProductId)
                      ->groupBy('stocks.product_id')
