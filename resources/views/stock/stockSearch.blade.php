@@ -1,7 +1,8 @@
 @php
     $title = __('在庫管理');
 @endphp
-@extends('layouts.my')
+@extends('layouts/mk_frame')
+
 @section('content')
 <div class="container">
     <h1>{{ $title }}</h1>
