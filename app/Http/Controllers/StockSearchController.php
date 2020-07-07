@@ -20,7 +20,7 @@ class StockSearchController extends Controller
                      ->join('mst_products', 'stocks.product_id', '=', 'mst_products.product_id')
                      ->where('mst_products.product_id', 'like', '%'.$searchWord.'%')
                      ->orWhere('mst_products.name', 'like', '%'.$searchWord.'%')
-                     ->groupBy('mst_products.name')
+                     ->groupBy('name')
                      ->get();
 
 		return view('stock.stockSearch', [
