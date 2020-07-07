@@ -16,13 +16,12 @@ class StockSearchController extends Controller
 		$productMap = MstProduct::getMap();
 		$genreMap = MstGenre::getMap();
 		$stockList = DB::table('stocks')
-                     ->select(DB::raw('products.id as id , products.name as name, sum(stocks.stock) as total_stock'))
-                     ->join('mst_products', 'stocks.product_id', '=', 'products.product_id')
-                     ->where('products.id', 'like', '%'.$searchWord.'%')
-                     ->orWhere('products.name', 'like', '%'.$searchWord.'%')
-                     ->groupBy('products.name')
+                     ->select(DB::raw('stocks.product_id as id , mst_products.name as name, sum(stocks.stock) as total_stock'))
+                     ->join('mst_products', 'stocks.product_id', '=', 'mst_products.product_id')
+                     ->where('mst_products.id', 'like', '%'.$searchWord.'%')
+                     ->orWhere('mst_products.name', 'like', '%'.$searchWord.'%')
+                     ->groupBy('mst_products.name')
                      ->get();
-		$stockList = Stock::all();
 
 		return view('stock.stockSearch', [
             'title' => '在庫管理システム',
