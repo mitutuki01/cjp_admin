@@ -10,17 +10,28 @@ use App\Stock;
 
 class StockSearchController extends Controller
 {
-	public function search(){ 
-		$searchWord = "";
+	public function search(Request $request){ 
+		$searchWord = $request->word;
+
+		$targetProductId = [];
+		if($searchWord == ""){
+			$targetProductId = array_keys($productMap);
+		}else{
+			foreach ($productMap as $id => $product) {
+				if(strpos($product['name'], $searchWord) !== false 
+					|| strpos(strval($id), $searchWord) !== false ){
+					$targetProductId[] = $id;
+				}
+			}	
+		}
 
 		$productMap = MstProduct::getMap();
 		$genreMap = MstGenre::getMap();
 		$stockList = DB::table('stocks')
                      ->select(DB::raw('stocks.product_id as id , mst_products.name as name, sum(stocks.stock) as total_stock'))
                      ->join('mst_products', 'stocks.product_id', '=', 'mst_products.product_id')
-                     ->where('mst_products.product_id', 'like', '%'.$searchWord.'%')
-                     ->orWhere('mst_products.name', 'like', '%'.$searchWord.'%')
-                     ->groupBy('name')
+                     ->whereIn('stocks.product_id', $targetProductId)
+                     ->groupBy('stocks.product_id')
                      ->get();
 
 		return view('stock.stockSearch', [
